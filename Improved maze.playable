@@ -1,0 +1,774 @@
+/*
+Resource map with balanced gameplay
+Generates diverse biomes with reasonable resource distribution
+*/
+
+<PLAYER_SETUP>
+random_placement
+
+effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD 125
+effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD 110
+effect_amount MOD_RESOURCE AMOUNT_STARTING_GOLD ATTR_ADD 75
+effect_amount MOD_RESOURCE AMOUNT_STARTING_STONE ATTR_ADD 125
+
+# --- Playable scaling (~silly/10, min 5, rounded to nearest 5) ---
+# Scaled down yields for a playable map
+effect_amount GAIA_SET_ATTRIBUTE CHICKEN_A ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE CHICKEN_B ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE CHICKEN_C ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE HARE_A ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE HARE_B ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE DLC_BOXTURTLE ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE RED_FOX ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE SALMON ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE GREAT_FISH_MARLIN ATTR_STORAGE_VALUE 50
+effect_amount GAIA_SET_ATTRIBUTE FISH ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE MONKEY_ID ATTR_STORAGE_VALUE 5
+effect_amount GAIA_SET_ATTRIBUTE WILD_HORSE ATTR_STORAGE_VALUE 90
+effect_amount GAIA_SET_ATTRIBUTE WILD_HORSE_B ATTR_STORAGE_VALUE 90
+effect_amount GAIA_SET_ATTRIBUTE SHEEP ATTR_STORAGE_VALUE 15
+effect_amount GAIA_SET_ATTRIBUTE GOAT ATTR_STORAGE_VALUE 10
+effect_amount GAIA_SET_ATTRIBUTE BOAR ATTR_STORAGE_VALUE 30
+effect_amount GAIA_SET_ATTRIBUTE WOLF ATTR_STORAGE_VALUE 10
+effect_amount GAIA_SET_ATTRIBUTE TIGER ATTR_STORAGE_VALUE 50
+effect_amount GAIA_SET_ATTRIBUTE LION ATTR_STORAGE_VALUE 50
+effect_amount GAIA_SET_ATTRIBUTE CROCODILE ATTR_STORAGE_VALUE 70
+effect_amount GAIA_SET_ATTRIBUTE POLAR_BEAR ATTR_STORAGE_VALUE 80
+effect_amount GAIA_SET_ATTRIBUTE BISON ATTR_STORAGE_VALUE 180
+effect_amount GAIA_SET_ATTRIBUTE DLC_LLAMA ATTR_STORAGE_VALUE 35
+effect_amount GAIA_SET_ATTRIBUTE LLAMA_B ATTR_STORAGE_VALUE 35
+effect_amount GAIA_SET_ATTRIBUTE DLC_COW ATTR_STORAGE_VALUE 150
+effect_amount GAIA_SET_ATTRIBUTE DLC_COW_B ATTR_STORAGE_VALUE 150
+effect_amount GAIA_SET_ATTRIBUTE DLC_COW_C ATTR_STORAGE_VALUE 150
+effect_amount GAIA_SET_ATTRIBUTE DLC_COW_D ATTR_STORAGE_VALUE 150
+effect_amount GAIA_SET_ATTRIBUTE DLC_RHINO ATTR_STORAGE_VALUE 500
+effect_amount GAIA_SET_ATTRIBUTE DLC_ELEPHANT ATTR_STORAGE_VALUE 1000
+
+# Optional per-civilization starting resource examples (commented):
+# For "realism" file we can indicate civ-based AMOUNT_STARTING_* adjustments. Enable per-civ adjustments manually if desired.
+# e.g. wealthy civs: effect_amount MOD_RESOURCE AMOUNT_STARTING_GOLD ATTR_ADD 150
+# e.g. stone-rich civs: effect_amount MOD_RESOURCE AMOUNT_STARTING_STONE ATTR_ADD 200
+# e.g. forest civs: effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD 200
+# (These examples are commented out to avoid accidental activation.)
+
+start_random
+percent_chance 12 #define 热带
+percent_chance 4 #define 南亚热带
+percent_chance 15 #define 北亚热带
+percent_chance 13 #define 暖温带半湿润区
+percent_chance 10 #define 暖温带半干旱区
+percent_chance 14 #define 中温带湿润区
+percent_chance 3 #define 中温带干旱区
+percent_chance 8 #define 寒温带
+percent_chance 16 #define 亚寒带
+percent_chance 5 #define 青藏高寒区
+end_random
+
+start_random
+percent_chance 50 #const 有好果子吃 59
+percent_chance 50 #const 有好果子吃 1059
+end_random
+
+start_random
+percent_chance 50 #define 解放生产力
+end_random
+
+if 热带
+#const 主题森林 56  	/* DLC_RAINFOREST */
+#const 初始空地 60  	/* DLC_JUNGLEGRASS */
+#const 林间空地 62  	/* DLC_JUNGLELEAVES */
+#const 小块空地 77  	/* greenish leaves  */
+#const 初始森林 56  	/* DLC_RAINFOREST */
+#const 林间森林 55  	/* DLC_MANGROVEFOREST */
+#const 林间林间 54  	/* DLC_MANGROVESHALLOW */
+#const 初始水洼 58  	/* DLC_WATER5 */
+#const 林间水洼 58  	/* DLC_WATER5 */
+#const 水洼浅滩 59  	/* DLC_NEWSHALLOW  */
+#const 初始装饰 122	/* GRASS_FLOWERS_1 */
+#const 林间装饰 44  	/* DLC_MOORLAND */
+#const 小块装饰 71  	/* underbrush, leaves */
+#const 还能再装 62  	/* DLC_JUNGLELEAVES */
+#const 连接 62         	/* DLC_JUNGLELEAVES */
+
+#define 独居犀牛
+#const 家禽甲 1142		/* 水牛 */
+#const 家禽乙 1243		/* 大鹅 */
+#const 家禽丙 833
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 48
+#const 野兽甲 812
+#const 野兽乙 1031		/* 鳄鱼 */
+#const 野兽丙 1135
+#const 野兽丁 1137		/* 老虎 */
+#const 一号树木 1146
+#const 二号树木 1146
+#const 三号树木 1350	/* 芦苇 */
+#const 四号树木 1144
+#const 野人 2096		/* 猴子 */
+#const 看看鸟 816
+#const 初始情趣小物品 1366
+#const 林间情趣小物品 859	 /* 花花草草 */
+#const 大块地情趣物品 1091
+#const 小块地情趣物品 859	 /* 花花草草 */
+
+/* Tropical biome animals and trees */
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 4 max_distance_to_players 8 min_distance_group_placement 1 avoid_forest_zone 0 }
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 6 max_distance_to_players 15 min_distance_group_placement 1 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 4 set_gaia_object_only min_distance_to_players 6 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 野人 { resource_delta 50 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size set_gaia_unconvertible }
+
+elseif 南亚热带
+#const 主题森林 17  	/* JUNGLE */
+#const 初始空地 9    	/* GRASS3 */
+#const 林间空地 44  	/* DLC_MOORLAND */
+#const 小块空地 5    	/* LEAVES  */
+#const 初始森林 18  	/* BAMBOO */
+#const 林间森林 18  	/* BAMBOO */
+#const 林间林间 5    	/* LEAVES  */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 90  	/* shallow, reeds  */
+#const 初始装饰 44  	/* DLC_MOORLAND */
+#const 林间装饰 5    	/* LEAVES  */
+#const 小块装饰 123	/* GRASS_FLOWERS_2  */
+#const 还能再装 44  	/* DLC_MOORLAND */
+#const 连接  71  	/* underbrush, leaves */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃鸡
+#define 吃兔
+#define 独居大象
+#const 家禽甲 1142		/* 水牛 */
+#const 家禽乙 1243		/* 大鹅 */
+#const 家禽丙 1245		/* 猪猪 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 65		/* 小鹿 */
+#const 野兽甲 1137		/* 老虎 */
+#const 野兽乙 1031		/* 鳄鱼 */
+#const 野兽丙 126		/* 狼 */
+#const 野兽丁 126		/* 狼 */
+#const 一号树木 348 	/* 竹子 */
+#const 二号树木 414 	/* 丛林 */
+#const 三号树木 1350	/* 芦苇 */
+#const 四号树木 414 	/* 丛林 */
+#const 野人 2096		/* 猴子 */
+#const 看看鸟 1028		/* 白鹳 */
+#const 初始情趣小物品 2022	 /* 宫廷装饰 */
+#const 林间情趣小物品 859	 /* 花花草草 */
+#const 大块地情趣物品 1366	 /* 花花草草 */
+#const 小块地情趣物品 859	 /* 花花草草 */
+
+/* Subtropical biome animals and trees */
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 6 max_distance_to_players 15 min_distance_group_placement 1 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 2 set_gaia_object_only min_distance_to_players 6 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 野人 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size set_gaia_unconvertible }
+
+elseif 北亚热带
+#const 主题森林 113  	/* LUSH_BAMBOO_FOREST */
+#const 初始空地 12  	/* GRASS2 */
+#const 林间空地 122	/* GRASS_FLOWERS_1 */
+#const 小块空地 123	/* GRASS_FLOWERS_2 */
+#const 初始森林 113  	/* LUSH_BAMBOO_FOREST */
+#const 林间森林 18  	/* BAMBOO */
+#const 林间林间 92  	/* forest, reeds */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 91  	/* DLC_REEDSBEACH  */
+#const 初始装饰 122	/* GRASS_FLOWERS_1 */
+#const 林间装饰 12  	/* GRASS2 */
+#const 小块装饰 71  	/* underbrush, leaves */
+#const 还能再装 76  	/* dirt, mud */
+#const 连接 0           	/* GRASS */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃鸡
+#define 吃兔
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 1142		/* 水牛 */
+#const 家禽乙 1243		/* 大鹅 */
+#const 家禽丙 1245		/* 猪猪 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 65		/* 小鹿 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 1137		/* 老虎 */
+#const 野兽丁 1137		/* 老虎 */
+#const 一号树木 1984	/* 大竹子 */
+#const 二号树木 2025	/* 柳树 */
+#const 三号树木 2017	/* 桃林 */
+#const 四号树木 2017	/* 桃林 */
+#const 野人 2096		/* 猴子 */
+#const 看看鸟 2026		/* 丹顶鹤 */
+#const 初始情趣小物品 2022	 /* 宫廷装饰 */
+#const 林间情趣小物品 859	 /* 花花草草 */
+#const 大块地情趣物品 1366	 /* 花花草草 */
+#const 小块地情趣物品 2009	 /* 石头 */
+elseif 暖温带半湿润区
+#const 主题森林 10  	/* FOREST */
+#const 初始空地 0    	/* GRASS */
+#const 林间空地 9    	/* GRASS3 */
+#const 小块空地 5    	/* LEAVES */
+#const 初始森林 19  	/* PINE_FOREST */
+#const 林间森林 19  	/* PINE_FOREST */
+#const 林间林间 12    	/* GRASS2 */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 91  	/* DLC_REEDSBEACH  */
+#const 初始装饰 122	/* GRASS_FLOWERS_1 */
+#const 林间装饰 3    	/* DIRT3 */
+#const 小块装饰 3    	/* DIRT3 */
+#const 还能再装 76  	/* dirt, mud */
+#const 连接 71  	/* underbrush, leaves */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃鸡
+#define 吃兔
+#define 大楚兴
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1243		/* 大鹅 */
+#const 家禽丙 1245		/* 猪猪 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 65		/* 小鹿 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 2089		/* 黑熊 */
+#const 野兽丁 2089		/* 黑熊 */
+#const 一号树木 302	/* 灌木丛 */
+#const 二号树木 2025	/* 柳树 */
+#const 三号树木 2016	/* 迎客松 */
+#const 四号树木 411	/* 橡树 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 96		/* 鹰 */
+#const 初始情趣小物品 2022	 /* 宫廷装饰 */
+#const 林间情趣小物品 859	 /* 花花草草 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1366	 /* 花花草草 */
+elseif 暖温带半干旱区
+#const 主题森林 19  	/* PINE_FOREST */
+#const 初始空地 9    	/* GRASS */
+#const 林间空地 100    	/* DLC_DRYGRASS */
+#const 小块空地 5    	/* LEAVES */
+#const 初始森林 20  	/* oak, forest */
+#const 林间森林 10  	/* FOREST */
+#const 林间林间 123    	/* GRASS_FLOWERS_2 */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 4    	/* SHALLOW */
+#const 水洼浅滩 91  	/* DLC_REEDSBEACH  */
+#const 初始装饰 122	/* GRASS_FLOWERS_1 */
+#const 林间装饰 6    	/* DIRT */
+#const 小块装饰 3    	/* DIRT3 */
+#const 还能再装 102  	/* DLC_DESERTGRAVEL */
+#const 连接 5    	/* LEAVES */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 吃草泥马
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 1245		/* 猪猪 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 1239		/* 羱羊 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 126		/* 狼 */
+#const 野兽丁 126		/* 狼 */
+#const 一号树木 302	/* 灌木丛 */
+#const 二号树木 350	/* 松树 */
+#const 三号树木 1053	/* 灌木丛 */
+#const 四号树木 411	/* 橡树 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 96		/* 鹰 */
+#const 初始情趣小物品 1033	 /* 野草 */
+#const 林间情趣小物品 857	 /* 干草堆 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1366	 /* 花花草草 */
+elseif 中温带湿润区
+#define 层林尽染
+#const 主题森林 10  	/* FOREST */
+#const 初始空地 12    	/* GRASS2 */
+#const 林间空地 9    	/* GRASS3 */
+#const 小块空地 122	/* GRASS_FLOWERS_1 */
+#const 初始森林 19  	/* PINE_FOREST */
+#const 林间森林 110  	/* BIRCH_FOREST */
+#const 林间林间 123	/* GRASS_FLOWERS_2 */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 4    	/* SHALLOW  */
+#const 初始装饰 123	/* GRASS_FLOWERS_2 */
+#const 林间装饰 3    	/* DIRT3 */
+#const 小块装饰 3    	/* DIRT3 */
+#const 还能再装 76  	/* dirt, mud */
+#const 主题森林装饰 104  	/* DLC_FORESTAUTUMN */
+#const 林间森林装饰 104  	/* DLC_FORESTAUTUMN */
+#const 连接 0  	/* GRASS */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 吃草泥马
+#define 吃牛牛
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 1245		/* 猪猪 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 1896		/* 盘羊 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 2089		/* 黑熊 */
+#const 野兽丁 2089		/* 黑熊 */
+#const 一号树木 2028	/* 枫树 */
+#const 二号树木 2027	/* 枫树 */
+#const 三号树木 1248	/* 秋天橡树 */
+#const 四号树木 1717	/* 桦树 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 2026		/* 丹顶鹤 */
+#const 初始情趣小物品 2031	 /* 落叶 */
+#const 林间情趣小物品 2031	 /* 落叶 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1366	 /* 花花草草 */
+elseif 中温带干旱区
+#const 主题森林 13  	/* PALM_DESERT */
+#const 初始空地 6    	/* DIRT */
+#const 林间空地 14    	/* DESERT */
+#const 小块空地 3    	/* DIRT3 */
+#const 初始森林 19  	/* PINE_FOREST */
+#const 林间森林 48  	/* DLC_DRAGONFOREST */
+#const 林间林间 100	/* DLC_DRYGRASS */
+#const 初始水洼 58    	/* DLC_WATER5 */
+#const 林间水洼 91  	/* DLC_REEDSBEACH  */
+#const 水洼浅滩 58    	/* DLC_WATER5 */
+#const 初始装饰 41  	/* DLC_SAVANNAH */
+#const 林间装饰 6    	/* DIRT */
+#const 小块装饰 102  	/* DLC_DESERTGRAVEL */
+#const 还能再装 70  	/* gravel, default */
+#const 连接 3    	/*DIRT3 */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 大楚兴
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 1060		/* 山羊 */
+#const 牲畜甲 1239		/* 羱羊 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 1239		/* 羱羊 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 126		/* 狼 */
+#const 野兽丁 2091		/* 色狼 */
+#const 一号树木 351	/* 棕榈 */
+#const 二号树木 1539	/* 砍了的树 */
+#const 三号树木 1053	/* 灌木丛 */
+#const 四号树木 350	/* 松树 */
+#const 野人 884		/* 野骆驼 */
+#const 看看鸟 1305		/* 秃鹫 */
+#const 初始情趣小物品 1091	 /* 动物残骸 */
+#const 林间情趣小物品 710	 /* 两脚兽残骸 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1247	 /* 野生双峰骆驼 */
+elseif 寒温带
+#define 层林尽染
+#const 主题森林 19  	/* PINE_FOREST */
+#const 初始空地 12    	/* GRASS2 */
+#const 林间空地 9    	/* GRASS3 */
+#const 小块空地 123 	/* GRASS_FLOWERS_2 */
+#const 初始森林 104  	/* DLC_FORESTAUTUMN */
+#const 林间森林 110  	/* BIRCH_FOREST */
+#const 林间林间 5    	/* LEAVES */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 4    	/* SHALLOW  */
+#const 初始装饰 123	/* GRASS_FLOWERS_2 */
+#const 林间装饰 5    	/* LEAVES */
+#const 小块装饰 5    	/* LEAVES */
+#const 还能再装 44  	/* DLC_MOORLAND */
+#const 主题森林装饰 88  	/* MEDITERRANEAN_FOREST */
+#const 林间森林装饰 20  	/* FOREST */
+#const 连接 0  	/* GRASS */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 吃草泥马
+#define 吃牛牛
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 594		/* 绵羊 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 65		/* 小鹿 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 2089		/* 黑熊 */
+#const 野兽丁 2089		/* 黑熊 */
+#const 一号树木 2028	/* 枫树 */
+#const 二号树木 350	/* 松树 */
+#const 三号树木 2028	/* 枫树 */
+#const 四号树木 1717	/* 桦树 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 96		/* 老鹰 */
+#const 初始情趣小物品 2031	 /* 落叶 */
+#const 林间情趣小物品 2031	 /* 落叶 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1366	 /* 花花草草 */
+elseif 亚寒带
+#define 层林尽染
+#const 主题森林 19  	/* PINE_FOREST */
+#const 初始空地 12    	/* GRASS2 */
+#const 林间空地 9    	/* GRASS3 */
+#const 小块空地 72  	/* underbrush, snow */
+#const 初始森林 19  	/* PINE_FOREST */
+#const 林间森林 104  	/* DLC_FORESTAUTUMN */
+#const 林间林间 105	/* DLC_FORESTSNOWAUTUMN */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 4    	/* SHALLOW  */
+#const 初始装饰 123	/* GRASS_FLOWERS_2 */
+#const 林间装饰 3    	/* DIRT3 */
+#const 小块装饰 122	/* GRASS_FLOWERS_1 */
+#const 还能再装 71  	/* underbrush, leaves */
+#const 主题森林装饰 21  	/* SNOW_FOREST */
+#const 林间森林装饰 110	/* BIRCH_FOREST */
+#const 连接 0  	/* GRASS */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 吃草泥马
+#define 吃牛牛
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 594		/* 绵羊 */
+#const 牲畜甲 65		/* 小鹿 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 1896		/* 盘羊 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 126		/* 狼 */
+#const 野兽丙 2089		/* 黑熊 */
+#const 野兽丁 2089		/* 黑熊 */
+#const 一号树木 413	/* 雪松 */
+#const 二号树木 350	/* 松树 */
+#const 三号树木 1248	/* 秋天橡树 */
+#const 四号树木 1717	/* 桦树 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 96		/* 老鹰 */
+#const 初始情趣小物品 2031	 /* 落叶 */
+#const 林间情趣小物品 2031	 /* 落叶 */
+#const 大块地情趣物品 819	 /* 路标 */
+#const 小块地情趣物品 1330	 /* 桶 */
+elseif 青藏高寒区
+#const 主题森林 19  	/* PINE_FOREST */
+#const 初始空地 102  	/* DLC_DESERTGRAVEL */
+#const 林间空地 9    	/* GRASS3 */
+#const 小块空地 6    	/* DIRT */
+#const 初始森林 20  	/* forest. bush */
+#const 林间森林 21  	/* SNOW_FOREST */
+#const 林间林间 33  	/* DIRT_SNOW */
+#const 初始水洼 1    	/* WATER */
+#const 林间水洼 1    	/* WATER */
+#const 水洼浅滩 1    	/* WATER  */
+#const 初始装饰 123	/* GRASS_FLOWERS_2 */
+#const 林间装饰 33  	/* DIRT_SNOW */
+#const 小块装饰 102  	/* DLC_DESERTGRAVEL */
+#const 还能再装 34    	/* DIRT_GRASS */
+#const 连接 5  	/* LEAVES */
+ /* 盗图狗IOOOOG最新盗图作品 */
+#define 吃兔
+#define 吃草泥马
+#define 吃鸡
+#define 大楚兴
+#define 群居野马
+#const 家禽甲 594		/* 绵羊 */
+#const 家禽乙 1060		/* 山羊 */
+#const 家禽丙 1060		/* 山羊 */
+#const 牲畜甲 1796		/* 羚羊 */
+#const 牲畜乙 48		/* 野猪 */
+#const 牲畜丙 1796		/* 羚羊 */
+#const 野兽甲 126		/* 狼 */
+#const 野兽乙 1241		/* 雪豹 */
+#const 野兽丙 2091 	/* 色狼 */
+#const 野兽丁 486   	/* 棕熊 */
+#const 一号树木 413	/* 雪松 */
+#const 二号树木 350	/* 松树 */
+#const 三号树木 1250	/* 枯树 */
+#const 四号树木 1539	/* 树桩子 */
+#const 野人 835		/* 野马 */
+#const 看看鸟 1056		/* 游隼 */
+#const 初始情趣小物品 1091	 /* 动物残骸 */
+#const 林间情趣小物品 1366	 /* 花花草草 */
+#const 大块地情趣物品 859	 /* 花花草草 */
+#const 小块地情趣物品 710	 /* 两脚兽残骸 */
+
+/* Alpine biome animals and trees */
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 6 max_distance_to_players 15 min_distance_group_placement 1 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 2 set_gaia_object_only min_distance_to_players 6 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 三号树木 { resource_delta 10 number_of_objects 2 set_gaia_object_only min_distance_to_players 24 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+
+endif
+
+<LAND_GENERATION>
+base_terrain 主题森林
+create_player_lands {  terrain_type 初始空地 land_percent 11 base_size 12 clumping_factor 5 border_fuzziness 5 }
+
+create_land { terrain_type  初始空地 land_percent 1 border_fuzziness 5 clumping_factor 5 other_zone_avoidance_distance 1 land_position 1 99 }
+create_land { terrain_type  初始空地 land_percent 1 border_fuzziness 5 clumping_factor 5 other_zone_avoidance_distance 1 land_position 1 1 }
+create_land { terrain_type  初始空地 land_percent 1 border_fuzziness 5 clumping_factor 5 other_zone_avoidance_distance 1 land_position 99 99 }
+create_land { terrain_type  初始空地 land_percent 1 border_fuzziness 5 clumping_factor 5 other_zone_avoidance_distance 1 land_position 99 1 }	
+
+<ELEVATION_GENERATION>
+
+{
+base_terrain 初始空地
+number_of_tiles 60
+set_scale_by_size
+if TINY_MAP number_of_clumps 2
+elseif SMALL_MAP number_of_clumps 4
+elseif MEDIUM_MAP number_of_clumps 6
+elseif LARGE_MAP number_of_clumps 8
+elseif HUGE_MAP number_of_clumps 10
+elseif GIGANTIC_MAP number_of_clumps 12
+elseif LUDIKRIS_MAP number_of_clumps 12
+endif
+spacing 2
+enable_balanced_elevation
+}
+
+<TERRAIN_GENERATION>
+create_terrain 林间空地 { base_terrain 主题森林 land_percent 34 number_of_clumps 3 set_scale_by_groups clumping_factor 7 spacing_to_other_terrain_types 0 }
+
+create_terrain 小块空地 { base_terrain 主题森林 land_percent 7 number_of_clumps 14 set_scale_by_groups clumping_factor 5 }
+create_terrain 初始林林 { base_terrain 初始空地 land_percent 1 number_of_clumps 9 set_scale_by_groups spacing_to_other_terrain_types 2 set_avoid_player_start_areas 20 clumping_factor 5 }
+
+create_terrain 林间森林
+{
+base_terrain 林间空地
+land_percent 100
+number_of_clumps 500
+set_scale_by_groups
+clumping_factor 12
+if 热带 spacing_to_other_terrain_types 3 set_flat_terrain_only
+else spacing_to_other_terrain_types 4
+endif 
+}
+
+create_terrain 林间林间 { base_terrain 林间森林 number_of_tiles 40 number_of_clumps 4 set_scale_by_groups spacing_to_other_terrain_types 0 set_flat_terrain_only clumping_factor 5 }
+create_terrain 初始水洝 { base_terrain 初始空地 number_of_tiles 40 number_of_clumps 5 set_scale_by_groups spacing_to_other_terrain_types 4 set_flat_terrain_only set_avoid_player_start_areas 20 clumping_factor 5 }
+create_terrain 林间水洝 { base_terrain 林间空地 number_of_tiles 60 number_of_clumps 2 set_scale_by_groups spacing_to_other_terrain_types 2 set_flat_terrain_only clumping_factor 12 }
+create_terrain 水洝浅滩 { base_terrain 林间水洝 number_of_tiles 30 number_of_clumps 8 set_scale_by_groups spacing_to_other_terrain_types 0 set_flat_terrain_only clumping_factor 7 }
+create_terrain 初始装饰 { base_terrain 初始空地 land_percent 5 number_of_clumps 24 set_scale_by_groups clumping_factor 5 terrain_mask 1 }
+create_terrain 林间装饰 { base_terrain 林间空地 land_percent 30 number_of_clumps 20 set_scale_by_groups terrain_mask 1 }
+create_terrain 小块装饰 { base_terrain 小块空地 land_percent 3 number_of_clumps 9320 set_scale_by_groups terrain_mask 1 }
+create_terrain 还能再装 { base_terrain 初始空地 land_percent 1 number_of_clumps 24 set_scale_by_groups clumping_factor 5 terrain_mask 1 }
+
+if 层林尽染
+create_terrain 主题森林装饰 { base_terrain 主题森林 land_percent 5 number_of_clumps 9320 set_scale_by_groups spacing_to_other_terrain_types 3 set_flat_terrain_only clumping_factor 5 }
+create_terrain 林间森林装饰 { base_terrain 林间森林 land_percent 1 number_of_clumps 9320 set_scale_by_groups spacing_to_other_terrain_types 3 set_flat_terrain_only clumping_factor 5 }
+endif
+
+create_connect_all_players_land
+{
+replace_terrain 	主题森林 	连接
+terrain_cost 	主题森林 	5
+terrain_size    	连接	0 1
+}
+
+<OBJECTS_GENERATION>
+create_object TOWN_CENTER { set_place_for_every_player group_placement_radius 18 min_distance_to_players 0 max_distance_to_players 0 }
+create_object VILLAGER { set_place_for_every_player min_distance_to_players 6 max_distance_to_players 6 }
+create_object SCOUT { number_of_objects 1 set_place_for_every_player min_distance_to_players 7 max_distance_to_players 9 }	
+
+if REGICIDE
+create_object VILLAGER { number_of_objects 7 set_place_for_every_player min_distance_to_players 6 max_distance_to_players 6 }
+create_object KING { set_place_for_every_player min_distance_to_players 6 max_distance_to_players 6 }
+create_object CASTLE { set_place_for_every_player min_distance_to_players 10 max_distance_to_players 10 }
+endif
+
+create_object SHORE_FISH { resource_delta 5 number_of_objects 1 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 0 }
+create_object SHORE_FISH { resource_delta 10 number_of_objects 1 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 0 }
+create_object SHORE_FISH { resource_delta 15 number_of_objects 1 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 0 }
+create_object SHORE_FISH { resource_delta 20 number_of_objects 1 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 0 }
+create_object DLC_BOXTURTLE { resource_delta 5 number_of_objects 1 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 0 }
+create_object SALMON { number_of_objects 1 resource_delta 30 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 2 }
+create_object DORADO { number_of_objects 1 resource_delta 40 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 2 }
+create_object MARLIN1 { number_of_objects 1 resource_delta 200 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 2 }
+create_object GREAT_FISH_MARLIN { number_of_objects 1 resource_delta 500 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 4 }
+create_object SNAPPER { number_of_objects 1 resource_delta 35 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 2 }
+create_object FISH { number_of_objects 1 resource_delta 50 set_scaling_to_map_size set_gaia_object_only max_distance_to_other_zones 2 }
+
+/* 资源 */
+/* avoid_other_land_zones 2 是动物世界版本新增加内容，很好 */
+create_object 有好果子吃
+{ resource_delta 80 set_circular_placement number_of_objects 6 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 10 max_distance_to_players 12 set_tight_grouping min_distance_group_placement 6 }
+
+create_object GOLD
+{ resource_delta 200 set_circular_placement number_of_objects 4 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 14 max_distance_to_players 16 set_tight_grouping min_distance_group_placement 6 }
+
+create_object STONE
+{ resource_delta 150 set_circular_placement number_of_objects 3 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 15 max_distance_to_players 18 set_tight_grouping min_distance_group_placement 6 }
+
+create_object 有好果子吃
+{ resource_delta 80 set_circular_placement number_of_objects 6 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 19 max_distance_to_players 22 set_tight_grouping min_distance_group_placement 6 avoid_forest_zone 1 }
+
+create_object GOLD
+{ resource_delta 300 set_circular_placement number_of_objects 4 group_placement_radius 2 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 24 max_distance_to_players 28 set_tight_grouping min_distance_group_placement 6 avoid_forest_zone 1 }
+
+create_object STONE
+{ resource_delta 200 set_circular_placement number_of_objects 3 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 24 max_distance_to_players 28 set_tight_grouping min_distance_group_placement 6 avoid_forest_zone 1 }
+
+create_object 有好果子吃 { resource_delta 150 number_of_objects 6 number_of_groups 1 set_scaling_to_player_number set_gaia_object_only set_tight_grouping min_distance_group_placement 6 temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object GOLD { resource_delta 300 number_of_objects 4 group_placement_radius 2 number_of_groups 1 set_scaling_to_player_number set_gaia_object_only set_tight_grouping min_distance_group_placement 6 temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object GOLD { resource_delta 300 number_of_objects 4 number_of_groups 1 set_scaling_to_player_number set_gaia_object_only set_tight_grouping min_distance_group_placement 6 temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object 有好果子吃 { resource_delta 250 number_of_objects 4 number_of_groups 1 set_gaia_object_only set_tight_grouping set_scaling_to_map_size min_distance_group_placement 4 temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object 有好果子吃 { resource_delta 200 number_of_objects 5 number_of_groups 2 set_gaia_object_only set_scaling_to_player_number set_tight_grouping group_variance 1 min_distance_group_placement 4 temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object GOLD { resource_delta 400 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object GOLD { resource_delta 600 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object GOLD { resource_delta 900 number_of_objects 2 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object STONE { resource_delta 400 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object STONE { resource_delta 600 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+create_object STONE { resource_delta 950 number_of_objects 2 number_of_groups 1 set_gaia_object_only set_tight_grouping min_distance_group_placement 5 set_scaling_to_map_size temp_min_distance_group_placement 6 min_distance_to_players 18 avoid_forest_zone 1 }
+
+/* 盗图狗IOOOOG最新盗图成果 */
+if 解放生产力
+create_object RELIC
+{
+start_random
+percent_chance 70    number_of_objects            1
+percent_chance 20    number_of_objects            2
+percent_chance 10    number_of_objects            3
+end_random
+set_gaia_object_only
+set_scaling_to_map_size
+}
+endif
+
+/* comment: limited relics - per-map relics are now controlled above */
+/* create_object RELIC { number_of_objects 1 set_gaia_object_only set_scaling_to_map_size } */
+/* comment: per-player relics disabled to keep total relics <= 8 */
+/* create_object RELIC { number_of_objects 1 set_gaia_object_only set_scaling_to_player_number } */
+
+/* 大鸟转转转 */
+create_object 看看鸟 { resource_delta 15 number_of_objects 1 set_gaia_object_only set_scaling_to_map_size }
+
+/* Poultry - biome aware */
+if 吃鸡
+create_object 家禽甲 { resource_delta 5 number_of_objects 3 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 7 max_distance_to_players 9 set_loose_grouping }
+create_object 家禽甲 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 12 max_distance_to_players 16 set_loose_grouping }
+create_object 家禽甲 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 14 max_distance_to_players 18 set_loose_grouping }
+create_object 家禽甲 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 22 set_scaling_to_player_number set_loose_grouping }
+endif
+
+create_object 家禽乙 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object 家禽乙 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object 家禽乙 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+
+if 吃鸡
+create_object 家禽丙 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object 家禽丙 { resource_delta 5 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+endif
+/* Livestock - biome aware */
+if 吃兔
+create_object 牲畜甲 { resource_delta 150 number_of_objects 2 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 10 max_distance_to_players 14 set_loose_grouping }
+create_object 牲畜甲 { resource_delta 150 number_of_objects 2 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 16 max_distance_to_players 19 set_loose_grouping }
+create_object 牲畜甲 { resource_delta 150 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 25 set_loose_grouping set_scaling_to_map_size }
+endif
+
+if 吃草泥马
+create_object 牲畜乙 { resource_delta 200 number_of_objects 1 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 12 max_distance_to_players 17 set_loose_grouping }
+create_object 牲畜乙 { resource_delta 200 number_of_objects 1 number_of_groups 1 set_place_for_every_player set_gaia_object_only min_distance_to_players 13 set_loose_grouping }
+create_object 牲畜乙 { resource_delta 200 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 25 set_loose_grouping set_scaling_to_map_size }
+endif
+
+if 吃牛牛
+create_object 牲畜丙 { resource_delta 1500 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object 牲畜丙 { resource_delta 1500 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 24 set_loose_grouping set_scaling_to_map_size }
+endif
+
+/* 动物世界 - biome aware spawning */
+if 吃鸡
+create_object 野兽甲 { resource_delta 80 number_of_objects 1 set_gaia_object_only min_distance_to_players 18 set_loose_grouping set_scaling_to_map_size }
+endif
+if 吃兔
+create_object 野兽乙 { resource_delta 200 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 22 set_loose_grouping set_scaling_to_map_size }
+endif
+if 吃草泥马
+create_object 野兽丙 { resource_delta 500 number_of_objects 1 set_gaia_object_only min_distance_to_players 26 set_loose_grouping set_scaling_to_map_size }
+endif
+if 吃牛牛
+create_object 野兽丁 { resource_delta 500 number_of_objects 1 number_of_groups 1 set_gaia_object_only min_distance_to_players 28 set_loose_grouping set_scaling_to_map_size }
+endif
+
+/* 小树，但远离森林 */
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 4 max_distance_to_players 8 min_distance_group_placement 1 avoid_forest_zone 0 }
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_place_for_every_player set_gaia_object_only min_distance_to_players 6 max_distance_to_players 15 min_distance_group_placement 1 avoid_forest_zone 1 }
+create_object 一号树木 { resource_delta 15 number_of_objects 2 set_gaia_object_only min_distance_to_players 16 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 一号树木 { resource_delta 15 number_of_objects 1 set_gaia_object_only min_distance_to_players 24 set_scaling_to_player_number min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 2 set_gaia_object_only min_distance_to_players 6 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 2 set_gaia_object_only min_distance_to_players 18 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 二号树木 { resource_delta 30 number_of_objects 1 set_gaia_object_only min_distance_to_players 24 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 三号树木 { resource_delta 10 number_of_objects 2 set_gaia_object_only min_distance_to_players 24 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 三号树木 { resource_delta 100 number_of_objects 1 set_gaia_object_only min_distance_to_players 36 set_scaling_to_player_number min_distance_group_placement 0 avoid_forest_zone 1 }
+create_object 四号树木 { resource_delta 150 number_of_objects 6 set_gaia_object_only min_distance_to_players 10 set_scaling_to_map_size min_distance_group_placement 0 avoid_forest_zone 0 }
+
+/* Global tree spawningmoved to biome blocks for biome-awareness */
+
+create_object 野人 { resource_delta 50 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size set_gaia_unconvertible }
+
+/* 全新唧唧生成器 */
+if 吃鸡
+create_object_group 唧唧 { add_object CHICKEN_A 33 add_object CHICKEN_B 33 add_object CHICKEN_C 33 }
+create_object 唧唧 { resource_delta 5 number_of_objects 4 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size min_distance_to_players 15 }
+endif
+
+if 吃兔
+create_object_group 兔崽子 { add_object HARE_A 50 add_object HARE_B 50 }
+create_object 兔崽子 { resource_delta 5 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size min_distance_to_players 15 }
+endif
+
+if 吃草泥马
+create_object_group 草泥马 { add_object LLAMA_B 50 add_object DLC_LLAMA 50 }
+create_object 草泥马 { resource_delta 350 number_of_objects 2 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size min_distance_to_players 15 }
+endif
+
+if 吃牛牛
+create_object_group 牛子 { add_object DLC_COW 25 add_object DLC_COW_B 25 add_object DLC_COW_C 25 add_object DLC_COW_D 25 }
+create_object 牛子 { resource_delta 150 number_of_objects 3 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size min_distance_to_players 15 }
+endif
+
+if 群居野马
+create_object_group 亲马 { add_object WILD_HORSE 50 add_object WILD_HORSE_B 50 }
+create_object 亲马 { resource_delta 90 number_of_objects 2 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size min_distance_to_players 20 }
+endif
+
+if 独居大象
+create_object DLC_ELEPHANT { resource_delta 1000 number_of_objects 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object DLC_ELEPHANT { resource_delta 1000 number_of_objects 1 min_distance_to_players 24 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+endif
+
+if 独居犀牛
+create_object DLC_RHINO { resource_delta 5000 number_of_objects 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object DLC_RHINO { resource_delta 5000 number_of_objects 1 min_distance_to_players 24 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+endif
+
+if 大楚兴
+create_object RED_FOX { resource_delta 15 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+create_object RED_FOX { resource_delta 25 number_of_objects 1 number_of_groups 1 set_gaia_object_only set_loose_grouping set_scaling_to_map_size }
+endif
+
+create_object 初始情趣小物品 { number_of_objects 4 set_gaia_object_only set_scaling_to_map_size terrain_to_place_on 初始空地 temp_min_distance_group_placement 15 min_distance_to_players 15 }
+create_object 林间情趣小物品 { number_of_objects 4 set_gaia_object_only set_scaling_to_map_size terrain_to_place_on 林间空地 temp_min_distance_group_placement 15 min_distance_to_players 15 }
+create_object 小块地情趣物品 { number_of_objects 2 set_gaia_object_only set_scaling_to_map_size terrain_to_place_on 小块空地 temp_min_distance_group_placement 15 min_distance_to_players 15 }
+create_object 大块地情趣物品 { number_of_objects 2 set_gaia_object_only set_scaling_to_map_size temp_min_distance_group_placement 15 min_distance_to_players 15 }
